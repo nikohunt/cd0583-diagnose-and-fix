@@ -6,7 +6,7 @@ The metrics produced by Evidently (drift_score) are logged to the MLFlow run
 and printed to the console.
 """
 
-import warningsx
+import warnings
 
 warnings.filterwarnings('ignore')
 warnings.simplefilter('ignore')
