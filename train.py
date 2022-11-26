@@ -1,20 +1,27 @@
-import warnings
+"""Script that downloads bikesharing data from UCI ML repository, commences an
+mlflow run, and uses Evidently to detect drift between 'production' training 
+data (reference_dates) and a batch of experiment dates (experiment_batches).
+
+The metrics produced by Evidently (drift_score) are logged to the MLFlow run
+and printed to the console.
+"""
+
+import warningsx
+
 warnings.filterwarnings('ignore')
 warnings.simplefilter('ignore')
 
-import json
-import json
-import pandas as pd
-import requests
-import zipfile
 import io
-
-from evidently.model_profile import Profile
-from evidently.model_profile.sections import DataDriftProfileSection
-from evidently.pipeline.column_mapping import ColumnMapping
+import json
+import zipfile
 
 import mlflow
 import mlflow.sklearn
+import pandas as pd
+import requests
+from evidently.model_profile import Profile
+from evidently.model_profile.sections import DataDriftProfileSection
+from evidently.pipeline.column_mapping import ColumnMapping
 from mlflow.tracking import MlflowClient
 
 #load data
